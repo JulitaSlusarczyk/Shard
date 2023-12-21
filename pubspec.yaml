@@ -1,4 +1,4 @@
-name: Shard
+name: shard
 description: "A new Flutter app for sharing boardgames."
 publish_to: 'none'
 
@@ -12,6 +12,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
+  flutter_riverpod: ^2.4.9
+  path_provider: ^2.1.1
+  barcode_scan2: ^4.3.0
 
 dev_dependencies:
   flutter_test:
@@ -24,4 +27,10 @@ flutter:
 
   assets:
     - assets/
+    - assets/images/
+
+  fonts:
+    - family: Rubik
+      fonts:
+      - asset: assets/fonts/RubikDoodleShadow-Regular.ttf
 
