@@ -33,4 +33,7 @@ flutter:
     - family: Rubik
       fonts:
       - asset: assets/fonts/RubikDoodleShadow-Regular.ttf
+    - family: Asap
+      fonts:
+      - asset: assets/fonts/AsapCondensed-Regular.ttf
 
