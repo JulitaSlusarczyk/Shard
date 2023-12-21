@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shard/pages/collection_page.dart';
 import 'package:shard/widgets/tile_card.dart';
 
 class HomePage extends ConsumerWidget {
@@ -9,7 +10,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xFF87E6FA),
+          backgroundColor: const Color(0xFF87E6FA),
           body: Column(
             children: [
               Expanded(
@@ -29,7 +30,14 @@ class HomePage extends ConsumerWidget {
                 ),
               ),
               TileCard(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CollectionPage(),
+                    ),
+                  );
+                },
                 title: 'Moja Planszoteka',
                 imagePath: 'assets/images/shelf.jpg',
                 backgroundColorEnabled: true,

@@ -33,7 +33,7 @@ class TileCard extends ConsumerWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Opacity(
-                    opacity: 0.5,
+                    opacity: 0.6,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(13.0),
                       child: Image.asset(
@@ -66,8 +66,6 @@ class TileCard extends ConsumerWidget {
                         title,
                         style: TextStyle(
                           fontFamily: 'Rubik',
-                          color: Color(0xFF623B1D),
-                          fontWeight: FontWeight.w500,
                           fontSize: containerHeight / 5,
                         ),
                       ),
