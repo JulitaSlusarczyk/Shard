@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shard/consts.dart';
 
 class CollectionPage extends ConsumerWidget {
   const CollectionPage({super.key});
@@ -8,7 +9,7 @@ class CollectionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFF87E6FA),
+        backgroundColor: backgroundColorApp,
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
