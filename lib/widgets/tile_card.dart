@@ -53,7 +53,10 @@ class TileCard extends ConsumerWidget {
                     ),
                   ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(13.0),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(13),
+                    topLeft: Radius.circular(13),
+                  ),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(
                       sigmaX: 25.0,
