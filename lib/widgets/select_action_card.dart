@@ -62,13 +62,11 @@ class SelectActionCard extends ConsumerWidget {
                       child: Padding(
                         padding: EdgeInsets.only(
                             right: screenWidth / 30,
-                            left: isRight ? 0 : screenWidth / 12
-                        ),
+                            left: isRight ? 0 : screenWidth / 12),
                         child: Text(
                           title,
-                          textAlign: !isRight
-                              ? TextAlign.left
-                              : TextAlign.right,
+                          textAlign:
+                              !isRight ? TextAlign.left : TextAlign.right,
                           style: TextStyle(
                             fontSize: filterHeight * 3 / 5,
                             fontFamily: 'Rubik',
@@ -88,37 +86,49 @@ class SelectActionCard extends ConsumerWidget {
 }
 
 class MyClipper extends CustomClipper<Path> {
-  MyClipper({required this.isRight});
+  MyClipper({
+    required this.isRight,
+    this.roundFactorLeft = 7 / 8,
+    this.roundFactorRight = 1 / 8,
+    this.customRounded
+  });
 
   bool isRight;
+  double roundFactorLeft;
+  double roundFactorRight;
+  double? customRounded;
 
   @override
   Path getClip(Size size) {
     final x = size.width;
     final y = size.height;
 
+    final rounded = customRounded ?? x / 20;
+
     Path right = Path()
-      ..moveTo(0, 10)
-      ..lineTo(0, y - 10)
-      ..quadraticBezierTo(0, y, 10, y)
-      ..lineTo(x - 10, y)
-      ..quadraticBezierTo(x, y, x - 3, y - 10)
-      ..lineTo(x * 7 / 8, 10)
-      ..quadraticBezierTo((x * 7 / 8) - 4, 0, (x * 7 / 8) - 10, 0)
-      ..lineTo(10, 0)
-      ..quadraticBezierTo(0, 0, 0, 10)
+      ..moveTo(0, rounded)
+      ..lineTo(0, y - rounded)
+      ..quadraticBezierTo(0, y, rounded, y)
+      ..lineTo(x - rounded, y)
+      ..quadraticBezierTo(x, y, x - (rounded * 0.3), y - rounded)
+      ..lineTo(x * roundFactorLeft, 10)
+      ..quadraticBezierTo((x * roundFactorLeft) - (rounded * 0.3), 0,
+          (x * roundFactorLeft) - rounded, 0)
+      ..lineTo(rounded, 0)
+      ..quadraticBezierTo(0, 0, 0, rounded)
       ..close();
 
     Path left = Path()
-      ..moveTo(x, y - 10)
-      ..lineTo(x, 10)
-      ..quadraticBezierTo(x, 0, x - 10, 0)
-      ..lineTo(13, 0)
-      ..quadraticBezierTo(0, 0, 3, 10)
-      ..lineTo(x / 8, y - 10)
-      ..quadraticBezierTo(x / 8 + 4, y, x / 8 + 10, y)
-      ..lineTo(x - 10, y)
-      ..quadraticBezierTo(x, y, x, y - 10)
+      ..moveTo(x, y - rounded)
+      ..lineTo(x, rounded)
+      ..quadraticBezierTo(x, 0, x - rounded, 0)
+      ..lineTo(rounded * 1.3, 0)
+      ..quadraticBezierTo(0, 0, rounded * 0.3, rounded)
+      ..lineTo(x * roundFactorRight, y - rounded)
+      ..quadraticBezierTo(x * roundFactorRight + (rounded * 0.3), y,
+          x * roundFactorRight + rounded, y)
+      ..lineTo(x - rounded, y)
+      ..quadraticBezierTo(x, y, x, y - rounded)
       ..close();
 
     return isRight ? right : left;
