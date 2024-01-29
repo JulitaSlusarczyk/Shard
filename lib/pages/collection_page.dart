@@ -10,6 +10,18 @@ class CollectionPage extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundColorApp,
+        appBar: AppBar(
+          title: Text("Planszoteka"),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {},
+            )
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
